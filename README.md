@@ -1,6 +1,6 @@
-# BlinkRead
+# AIReadSite
 
-BlinkRead is a chrome extension that generates a quick summary of any website, you can also ask any question about the website, powered by OpenAI [GPT-3.5](https://beta.openai.com/docs/models/gpt-3).
+AIReadSite is a chrome extension that generates a quick summary of any website, you can also ask any question about the website, powered by OpenAI [GPT-3.5](https://beta.openai.com/docs/models/gpt-3).
 
 ## Quick Installation
 
@@ -26,4 +26,4 @@ After running `yarn dev` or `yarn build`, a folder called **extension** will be 
 
 ## Server
 
-You can find server-side code in this repo [blinkread-server](https://github.com/akasuv/blinkread-server).
+You can find server-side code in this repo [myGPTReader-server](https://github.com/lishoulong/myGPTReader).
