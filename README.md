@@ -2,9 +2,12 @@
 
 AIReadSite is a chrome extension that generates a quick summary of any website, you can also ask any question about the website, powered by OpenAI [GPT-3.5](https://beta.openai.com/docs/models/gpt-3).
 
+- Similar to ChatGPT webpilot plugin. 相比 webpilot，AIReadSite 优点是不需要主动把页面 url 拷贝到 ChatGPT，而是直接在当前浏览的页面，通过唤醒 Chrome 插件就可以直接做内容摘要。
+- 支持把网站以及总结直接分享到指定的飞书群中
+
 ## Quick Installation
 
-You can find the extension on the [release page](https://github.com/akasuv/blinkread/releases).
+yarn build 后，直接把 extension 文件拖动到 chrome 插件中
 
 ## Getting Started
 

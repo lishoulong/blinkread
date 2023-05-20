@@ -97,7 +97,6 @@ function App() {
 
   const clickHandler = () => {
     const question = inputRef.current?.value.trim() ?? "";
-    console.log("clickHandler question", question)
     if (question.length) {
       setQuestionLoading(true);
       const urls = getUrl();
@@ -133,8 +132,8 @@ function App() {
       paddingBottom: fixedElementHeight,
     }}>
       <div className="flex items-center mb-2 gap-x-1">
-        <h1 className="font-black text-sm">BlinkRead</h1>
-        <span className="text-xs">Powered by OpenAI GPT-3</span>
+        <h1 className="font-black text-sm">AIReadSite</h1>
+        <span className="text-xs">Powered by OpenAI GPT-3.5</span>
       </div>
       <div
         className="w-[12px] absolute top-4 right-4 cursor-pointer"
