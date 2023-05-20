@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "BlinkRead",
+  "name": "AIGRead",
   "version": "0.0.1",
   "action": {},
   "icons": {
@@ -18,7 +18,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["logo.png", "loading.gif", "close.png"],
+      "resources": ["logo.png", "loading.gif", "close.png", "share.png"],
       "matches": ["*://*/*"]
     }
   ]
