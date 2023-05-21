@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import { List, message } from 'antd';
 
 const extractAllText = () => {
@@ -52,17 +52,17 @@ const Qa: React.FC<QaProps> = ({answers}) => (
     itemLayout="horizontal"
     dataSource={answers}
     header="问题以及答案"
-    style={{height: "300px", width: "95%", overflow: "auto", paddingBottom: "10px"}}
+    className="text-base h-[300px] w-[95%] overflow-auto pb-2.5"
     renderItem={(item: QaItem, index: number) => (
       <List.Item>
-        <div style={{display: "flex", flexDirection: "column"}}>
-          <div style={{display: "flex", flexDirection: "row"}}>
-            <button style={{width: '60px'}}>Question</button>
-            <div style={{flex: 1, border: "1px solid #070b0a1c",}}>{item.question}</div>
+        <div className="flex flex-col">
+          <div className="flex flex-row">
+            <button className="w-[60px]">Question</button>
+            <div className="flex-1 border border-solid border-opacity-10">{item.question}</div>
           </div>
-          <div style={{display: "flex", flexDirection: "row"}}>
-            <button style={{width: '60px'}}>Answer</button>
-            <div style={{display: 'flex', alignItems: 'center', flex: 1, height: '120px', overflow: 'scroll', border: "1px solid #070b0a1c",}}>{item.answer}</div>
+          <div className="flex flex-row">
+            <button className="w-[60px]">Answer</button>
+            <div className="items-center flex-1 h-[120px] overflow-scroll border border-solid border-opacity-10">{item.answer}</div>
           </div>
         </div>
       </List.Item>
@@ -111,7 +111,16 @@ function App() {
         }
       );
     }
+    if (inputRef.current) {
+      inputRef.current.value = ""; // 清空输入框
+    }
   }
+
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === "Enter") {
+      clickHandler();
+    }
+  };
 
   React.useEffect(() => {
     const allText = extractAllText();
@@ -159,15 +168,10 @@ function App() {
         </div>
       ) : (
         <div>
-          <h3>文章总结</h3>
+          <h3 className="font-semibold">文章总结</h3>
           <div
-            style={{
-              width: '95%',
-              height: '200px',
-              border: '1px solid #070b0a1c',
-              overflowY: 'scroll',
-            }}
-            dangerouslySetInnerHTML={{ __html: summarize }} // 使用此属性设置HTML
+            className="w-[95%] h-[200px] border border-solid border-opacity-10 overflow-y-scroll text-[13px]"
+            dangerouslySetInnerHTML={{ __html: summarize }}
           ></div>
         </div>
       )}
@@ -181,13 +185,18 @@ function App() {
       ) : (
         <Qa answers={answers}/>
       )}
-      <div style={{ position: "fixed", display: "flex", alignItems: "center", bottom: "1rem", left: "1rem", width: "calc(100% - 2rem)", maxWidth: "600px" }}>
-        <input
-          ref={inputRef} // 将 inputRef 引用赋值给 input 的 ref
-          style={{ flex: 2, border: "2px solid #ccc", borderRadius: "4px", padding: "0.5rem" }}
-        />
-        <span style={{ marginRight: "1rem", border: "1px solid", padding: "0.5rem", background: "#7070aa", color: "white" }} onClick={clickHandler}>开始提问</span>
-	    </div>
+      <div className="fixed bottom-[1rem] left-[1rem] w-[calc(100%-2rem)] max-w-[600px] flex items-center">
+          <div className="flex-1">
+            <input
+              ref={inputRef}
+              className="w-full border-2 border-grey-300 rounded pl-2 pr-2 py-1"
+              onKeyDown={handleKeyPress}
+            />
+          </div>
+          <div className="w-[90px] ml-4">
+            <span className="w-full p-2 bg-blue-400 text-white cursor-pointer" onClick={clickHandler}>开始提问</span>
+          </div>
+      </div>
     </div>
   );
 }
