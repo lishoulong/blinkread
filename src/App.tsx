@@ -129,8 +129,14 @@ function App() {
       { type: "summarize", url: urls, content: allText },
       function (response) {
         setLoading(false);
-        console.log('response.text.result', response.text.result)
-        setSummarize(response.text.result);
+        let summary = "";
+        if(response.error) {
+          summary = response.error
+        } else if (response?.text?.result) {
+          console.log('response.text.result', response.text.result)
+          summary = response.text.result
+        }
+        setSummarize(summary);
       }
     );
   }, []);
