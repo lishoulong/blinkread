@@ -16,7 +16,8 @@ chrome.action.onClicked.addListener((tab) => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   console.log("request.content", request);
   const { type, question, url, content } = request;
-  if (".feishu.cn".indexOf(url) > -1) {
+  const feishuUrlPattern = /.+\.feishu\.cn/;
+  if (feishuUrlPattern.test(url)) {
     sendResponse({ error: `不支持对飞书文档就行摘要: ${url}` });
   }
   if (type === "summarize") {
